@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
-from database import assets, get_next_id
-from models import Asset
+from src.database import assets, get_next_id
+from src.models import Asset
 
 router = APIRouter(prefix="/assets", tags=["assets"])
 
