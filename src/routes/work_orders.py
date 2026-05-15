@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
-from database import assets, get_next_id, work_orders
-from models import WorkOrder
+from src.database import assets, get_next_id, work_orders
+from src.models import WorkOrder
 
 router = APIRouter(prefix="/work-orders", tags=["work-orders"])
 
