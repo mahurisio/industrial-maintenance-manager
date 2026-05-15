@@ -1,8 +1,8 @@
-from models import Asset, Client, Technician, WorkOrder
+from src.models import Asset, Client, Technician, WorkOrder
 
 
 # Almacenamiento temporal en memoria.
-# Más adelante este módulo se reemplazará por una conexión real a base de datos.
+# Mas adelante este modulo se reemplazara por una conexion real a base de datos.
 assets: list[Asset] = []
 clients: list[Client] = []
 technicians: list[Technician] = []
@@ -10,7 +10,7 @@ work_orders: list[WorkOrder] = []
 
 
 def get_next_id(collection: list) -> int:
-    """Calcula el siguiente identificador entero para una colección en memoria."""
+    """Calcula el siguiente identificador entero para una coleccion en memoria."""
 
     if not collection:
         return 1
