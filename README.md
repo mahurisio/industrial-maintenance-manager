@@ -1,93 +1,171 @@
 # Industrial Maintenance Manager
 
-Sistema web en construcción para la gestión de mantenimiento industrial, órdenes de trabajo, activos, repuestos, costos y reportes técnicos.
+Sistema web en construccion para la gestion de mantenimiento industrial, ordenes de trabajo, activos, repuestos, costos y reportes tecnicos.
 
-Este proyecto nace desde una necesidad real: muchas empresas pequeñas, talleres y áreas de mantenimiento todavía controlan sus intervenciones con cuadernos, hojas sueltas, archivos dispersos o conversaciones de WhatsApp. Esa forma de trabajar puede servir por un tiempo, pero termina generando pérdida de información, dificultad para calcular costos, poca trazabilidad y mala toma de decisiones.
+Este proyecto nace desde una necesidad real: muchas empresas pequenas, talleres y areas de mantenimiento todavia controlan sus intervenciones con cuadernos, hojas sueltas, archivos dispersos o conversaciones de WhatsApp. Esa forma de trabajo genera perdida de informacion, dificultad para calcular costos, poca trazabilidad y mala toma de decisiones.
 
-La idea de este sistema es convertir la experiencia práctica del mantenimiento industrial en una solución de software organizada, medible y útil.
+La idea de este sistema es convertir la experiencia practica del mantenimiento industrial en una solucion de software organizada, medible y util.
 
 ## Objetivo del proyecto
 
-Desarrollar una aplicación que permita registrar, consultar y controlar información técnica relacionada con mantenimiento industrial.
+Desarrollar una aplicacion que permita registrar, consultar y controlar informacion tecnica relacionada con mantenimiento industrial.
 
 El sistema busca servir como una herramienta para:
 
-- Registrar máquinas, equipos o activos.
-- Crear órdenes de trabajo.
-- Diferenciar mantenimientos preventivos y correctivos.
+- Registrar maquinas, equipos o activos.
+- Crear ordenes de trabajo.
+- Diferenciar mantenimientos preventivos, correctivos e inspecciones.
 - Registrar repuestos, herramientas y consumibles utilizados.
-- Calcular costos básicos de intervención.
-- Guardar observaciones técnicas.
+- Calcular costos basicos de intervencion.
+- Guardar observaciones tecnicas.
 - Consultar historial de fallas.
-- Generar reportes para análisis posterior.
+- Generar reportes para analisis posterior.
 
-## Contexto técnico
+## Contexto tecnico
 
-Este proyecto está construido desde mi experiencia como tecnólogo en mecánica industrial, electrónica industrial y soldadura, junto con mi formación actual en Ingeniería de Software.
+Este proyecto esta construido desde mi experiencia como tecnologo en mecanica industrial, electronica industrial y soldadura, junto con mi formacion actual en Ingenieria de Software.
 
-No es solamente un ejercicio académico. Es una forma de llevar problemas reales del mundo industrial al desarrollo de software: máquinas que fallan, mantenimientos que no quedan documentados, repuestos que se pierden, costos que no se calculan bien y decisiones que se toman sin datos.
+No es solamente un ejercicio academico. Es una forma de llevar problemas reales del mundo industrial al desarrollo de software: maquinas que fallan, mantenimientos que no quedan documentados, repuestos que se pierden, costos que no se calculan bien y decisiones que se toman sin datos.
 
-## Tecnologías previstas
-
-El proyecto se desarrollará progresivamente con tecnologías como:
+## Tecnologias actuales
 
 - Python
-- FastAPI o Django
-- HTML, CSS y JavaScript
-- Base de datos SQL
+- FastAPI
+- Pydantic
+- Uvicorn
 - Git y GitHub
-- AWS para futuras pruebas de despliegue, almacenamiento, base de datos y monitoreo
 
-## Módulos iniciales
+## Tecnologias previstas
 
-### Gestión de activos
+- Base de datos SQL
+- PostgreSQL o MySQL
+- HTML, CSS y JavaScript
+- React en una etapa futura
+- AWS para despliegue, almacenamiento, base de datos, seguridad y monitoreo
 
-Registro de máquinas, equipos o elementos técnicos con información básica como nombre, código, ubicación, estado y observaciones.
+## Estructura actual del proyecto
 
-### Órdenes de trabajo
+```text
+industrial-maintenance-manager/
+|-- docs/
+|   |-- requirements.md
+|   |-- database-model.md
+|   |-- project-roadmap.md
+|-- src/
+|   |-- main.py
+|   |-- app.py
+|   |-- database.py
+|   |-- models.py
+|   |-- readme.md
+|   |-- routes/
+|       |-- __init__.py
+|       |-- assets.py
+|       |-- work_orders.py
+|-- .gitignore
+|-- requirements.txt
+|-- README.md
+```
 
-Creación y seguimiento de trabajos de mantenimiento, incluyendo tipo de intervención, descripción del problema, técnico responsable, fecha, estado y resultado.
+## Como ejecutar el proyecto en local
 
-### Repuestos y costos
+### 1. Clonar el repositorio
 
-Registro de repuestos utilizados, cantidades, valor estimado y costo total de la intervención.
+```bash
+git clone https://github.com/mahurisio/industrial-maintenance-manager.git
+cd industrial-maintenance-manager
+```
 
-### Historial técnico
+### 2. Crear un entorno virtual
 
-Consulta de intervenciones anteriores para identificar fallas repetitivas, equipos críticos y patrones de mantenimiento.
+En Windows:
 
-### Reportes
+```bash
+python -m venv .venv
+.venv/Scripts/activate
+```
 
-Generación de reportes básicos para analizar trabajos realizados, costos acumulados y frecuencia de fallas.
+En Linux o macOS:
 
-## Relación con AWS
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-A futuro, este proyecto buscará integrar servicios de AWS para darle una estructura más profesional:
+### 3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Ejecutar la API
+
+```bash
+uvicorn src.main:app --reload
+```
+
+Tambien se puede ejecutar desde la carpeta src con:
+
+```bash
+python main.py
+```
+
+### 5. Abrir la documentacion automatica
+
+Despues de ejecutar el servidor, abrir en el navegador:
+
+```text
+http://localhost:8000/docs
+```
+
+Desde esa pantalla se pueden probar las rutas de la API.
+
+## Rutas iniciales de la API
+
+```text
+GET  /
+GET  /health
+GET  /assets/
+POST /assets/
+GET  /assets/{asset_id}
+GET  /work-orders/
+POST /work-orders/
+GET  /work-orders/{work_order_id}
+```
+
+## Relacion con AWS
+
+A futuro, este proyecto buscara integrar servicios de AWS para darle una estructura mas profesional:
 
 - Amazon RDS para base de datos.
-- Amazon S3 para almacenamiento de evidencias técnicas, fotos o documentos.
+- Amazon S3 para almacenamiento de evidencias tecnicas, fotos o documentos.
 - IAM para control de accesos.
-- VPC para una arquitectura más segura.
+- VPC para una arquitectura mas segura.
 - CloudWatch para monitoreo.
 
-La intención es que el proyecto no se quede solo en el código local, sino que pueda crecer hacia una solución desplegada, segura y escalable.
+La intencion es que el proyecto no se quede solo en el codigo local, sino que pueda crecer hacia una solucion desplegada, segura y escalable.
+
+## Documentacion del proyecto
+
+- [Requisitos del proyecto](docs/requirements.md)
+- [Modelo de base de datos](docs/database-model.md)
+- [Roadmap del proyecto](docs/project-roadmap.md)
 
 ## Estado actual
 
-Proyecto en fase inicial de diseño y construcción.
+Proyecto en fase inicial de diseno y construccion.
 
-Próximos pasos:
+Ya cuenta con:
 
-- Definir estructura de carpetas.
-- Diseñar modelo de base de datos.
-- Crear primeras pantallas.
-- Implementar registro de activos.
-- Implementar órdenes de trabajo.
-- Documentar instalación y uso.
+- Documentacion inicial.
+- Estructura base del backend.
+- Modelos principales del dominio.
+- Rutas iniciales para activos y ordenes de trabajo.
+- Dependencias declaradas.
+- Preparacion para ejecucion local.
 
 ## Autor
 
-Daniel Mauricio Padilla González  
-Tecnólogo industrial y estudiante de Ingeniería de Software  
+Daniel Mauricio Padilla Gonzalez  
+Tecnologo industrial y estudiante de Ingenieria de Software  
 Manizales, Caldas, Colombia  
 Sitio web: https://intecmzles.com
