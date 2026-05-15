@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.routes import assets_router, work_orders_router
+from src.routes import assets_router, customers_router, technicians_router, work_orders_router
 
 
 def create_app() -> FastAPI:
@@ -13,6 +13,8 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(assets_router)
+    app.include_router(customers_router)
+    app.include_router(technicians_router)
     app.include_router(work_orders_router)
 
     @app.get("/")
