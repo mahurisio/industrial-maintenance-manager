@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from routes import assets_router, work_orders_router
+
 
 def create_app() -> FastAPI:
     """Create and configure the FastAPI application."""
@@ -9,6 +11,9 @@ def create_app() -> FastAPI:
         description="API para gestionar activos, órdenes de trabajo, repuestos, técnicos y clientes en procesos de mantenimiento industrial.",
         version="0.1.0",
     )
+
+    app.include_router(assets_router)
+    app.include_router(work_orders_router)
 
     @app.get("/")
     def root() -> dict[str, str]:
